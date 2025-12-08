@@ -1,6 +1,9 @@
+// Importing http module
 const http = require("http");
 
+// using http module to createServer
 const server = http.createServer((req, res) => {
+  // here is all my HTML content
   const htmlContent = (tag, content, code) => {
     res.setHeader("Content-Type", "text/html");
     res.write("<!DOCTYPE html>");
@@ -21,7 +24,9 @@ const server = http.createServer((req, res) => {
     res.write("</html>");
     res.statusCode = code;
   };
+  // get the url value
   const { url } = req;
+  // Defining all routes like home, about, services, contact, 404
   if (url === "/" || url === "/home") {
     htmlContent("Home", "Home page / Default page", 200);
     res.end();
@@ -41,7 +46,9 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
+// port number
 const PORT = 3000;
+// listening server
 server.listen(PORT, () =>
   console.log(`server is running on http://localhost:${PORT}`)
 );
