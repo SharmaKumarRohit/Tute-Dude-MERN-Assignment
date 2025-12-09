@@ -132,7 +132,7 @@
                             id: "2",
                             title: "Let's play game",
                             description: "I'm today playing BGMI",
-                            completed: false,
+                            completed: true,
                         },
                         {
                             id: "3",
