@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --color-primary: #1aac83;
+  --color-error: #e7195a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 0 16px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+header.header {
+  height: 64px;
+}
+
+nav.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+main.main {
+  background-color: #f0f0f0;
+  min-height: calc(100dvh - 64px);
+  padding: 2rem 0;
+}
+
+div.todo_main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5rem;
+}
+
+div.todos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+div.todo_details {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.24);
+}
+
+.todo_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+div.todo_details h3 {
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+div.todo_details p {
+  font-size: 14px;
+  color: #2f2e2e;
+  margin-bottom: 6px;
+}
+
+div.form_container h2 {
+  font-size: 20px;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+div.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+div.form_group label {
+  font-size: 14px;
+  color: #605e5e;
+  font-weight: 500;
+}
+
+div.form_group input {
+  border: none;
+  outline: none;
+  border: 2px solid #e1dcdc;
+  padding: 10px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+div.form_group input:focus {
+  border: 2px solid var(--color-primary);
+}
+
+form.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button.form_btn {
+  margin-top: 1rem;
+  border: none;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 8px 24px;
+}
+
+.error {
+  color: var(--color-error);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+input[type="text"].border_red {
+  border: 2px solid var(--color-error);
+}
+
+div.edit_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div.edit_form input {
+  border: none;
+  outline: none;
+  border: 2px solid #e1dcdc;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+div.edit_btn_group {
+  display: flex;
+  gap: 10px;
+}
+
+button.edit_btn {
+  border: none;
+  outline: none;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.line_through {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+input[type="text"].search_input {
+  border: none;
+  outline: none;
+  border: 2px solid #e1dcdc;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+h1.pending {
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #2f2e2e;
+  text-align: center;
+}
+
+p.no_found {
+  font-weight: 600;
+  color: var(--color-error);
+  font-size: 20px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  div.todo_main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  div.todos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
