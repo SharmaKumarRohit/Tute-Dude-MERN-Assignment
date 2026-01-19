@@ -18,6 +18,16 @@
 
 ![preview_image](preview_img.png)
 
+## Project Features
+
+- Retrieving the list of todo.
+- Creating a new todo.
+- Updating todo details.
+- Deleting a todo.
+- Toggle completed (`true` or `false`)
+- Search todo with debouncing feature
+- Developing for backend using `MVC` architecture
+
 ## Endpoints, Methods and their Description
 
 | Endpoint | Method              | Description                               |
