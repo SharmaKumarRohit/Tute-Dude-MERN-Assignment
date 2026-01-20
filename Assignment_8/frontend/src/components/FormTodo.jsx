@@ -15,7 +15,6 @@ function FormTodo() {
     const formData = { title, description: desc };
     try {
       const todo = await axios.post(`${BASE_URI}/todos`, formData);
-      console.log(todo);
       dispatch({ type: "ADD_TODO", payload: todo.data });
       setTitle("");
       setDesc("");
