@@ -3,26 +3,24 @@ import axios from "axios";
 import { BASE_URI } from "../constant";
 import { useTodo } from "../context/TodoProvider";
 
-function TodoForm() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [isError, setIsError] = useState(null);
+function FormTodo() {
   const { dispatch } = useTodo();
-  const [isPending, setIsPending] = useState(false);
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [isError, setIsError] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsPending(true);
     setIsError(null);
-    const data = { title, description };
+    const formData = { title, description: desc };
     try {
-      const todo = await axios.post(`${BASE_URI}/todos`, data);
+      const todo = await axios.post(`${BASE_URI}/todos`, formData);
+      console.log(todo);
       dispatch({ type: "ADD_TODO", payload: todo.data });
       setTitle("");
-      setDescription("");
+      setDesc("");
     } catch (error) {
       setIsError(error.response.data);
-    } finally {
-      setIsPending(false);
     }
   };
   return (
@@ -41,17 +39,17 @@ function TodoForm() {
           />
         </div>
         <div className="form_group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="desc">Description</label>
           <input
             type="text"
-            id="description"
+            id="desc"
             placeholder="description (optional)"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
           />
         </div>
         <button type="submit" className="form_btn">
-          {isPending ? "Adding..." : "Add Todo"}
+          Add Todo
         </button>
       </form>
       {isError && <div className="error">{isError.error}</div>}
@@ -59,4 +57,4 @@ function TodoForm() {
   );
 }
 
-export default TodoForm;
+export default FormTodo;

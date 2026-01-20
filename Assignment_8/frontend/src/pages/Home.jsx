@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URI } from "../constant";
-import TodoForm from "../components/TodoForm";
+import FormTodo from "../components/FormTodo";
 import { useTodo } from "../context/TodoProvider";
 import Todos from "../components/Todos";
 
@@ -53,7 +53,7 @@ function Home() {
           )}
         </div>
       </div>
-      <TodoForm />
+      <FormTodo />
     </div>
   );
 }
