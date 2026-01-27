@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-manrope: "Manrope", sans-serif;
+}
+
+@layer components {
+  .input_label {
+    @apply mb-2 text-sm font-semibold text-neutral-500;
+  }
+  .form_input {
+    @apply w-full p-3 text-sm outline-none rounded-lg border border-neutral-300 focus:ring-1 focus:ring-neutral-800 font-medium placeholder:text-neutral-400;
+  }
+  .btn {
+    @apply w-max text-sm font-semibold rounded-lg cursor-pointer hover:scale-103 transition-all;
+  }
+}
