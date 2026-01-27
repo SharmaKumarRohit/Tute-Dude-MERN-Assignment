@@ -11,12 +11,8 @@
 
 ## Live links:
 
-- Frontend hosted on vercel: [Live demo link](https://tute-dude-mern-assignment.vercel.app/)
-- Backend hosted on render: [Live demo link](https://tute-dude-mern-assignment.onrender.com)
-
-## Project Preview Image
-
-![preview_image](preview_img.png)
+- Frontend hosted on vercel: [Live demo link](https://tute-dude-mern-assignment-jqy1.vercel.app/)
+- Backend hosted on vercel: [Live demo link](https://tute-dude-mern-assignment-v4eb.vercel.app/)
 
 ## Project Features
 
