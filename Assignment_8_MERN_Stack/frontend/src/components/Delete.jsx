@@ -1,8 +1,7 @@
-import { X } from "lucide-react";
+import { IconX, IconLoader2 } from "@tabler/icons-react";
 import { useTodo } from "../context/TodoProvider";
-import { LoaderCircle } from "lucide-react";
 import { useState } from "react";
-import { deleteTodo } from "../utils/todoApi";
+import { deleteTodo } from "../utils/todoApiRequest";
 
 function Delete({ ModelClose, id }) {
   const { dispatch } = useTodo();
@@ -30,7 +29,7 @@ function Delete({ ModelClose, id }) {
             className="text-neutral-800 hover:bg-neutral-100 font-medium p-1 rounded-md"
             onClick={ModelClose}
           >
-            <X size={16} />
+            <IconX size={16} stroke={2.5} />
           </button>
         </div>
         <p className="text-sm text-neutral-500 font-medium mb-4">
@@ -51,7 +50,7 @@ function Delete({ ModelClose, id }) {
             onClick={handleDelete}
           >
             {isLoading ? (
-              <LoaderCircle size={19} className="animate-spin" />
+              <IconLoader2 size={19} className="animate-spin" />
             ) : (
               "Delete"
             )}

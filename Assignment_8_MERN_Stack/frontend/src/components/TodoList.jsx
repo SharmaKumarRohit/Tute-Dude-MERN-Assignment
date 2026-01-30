@@ -1,6 +1,6 @@
 import { useTodo } from "../context/TodoProvider";
 import Todo from "./Todo";
-import { LoaderCircle } from "lucide-react";
+import { IconLoader2 } from "@tabler/icons-react";
 
 function TodoList() {
   const {
@@ -16,7 +16,7 @@ function TodoList() {
   if (loading) {
     return (
       <div className="py-10 flex justify-center">
-        <LoaderCircle size={45} className="text-neutral-800 animate-spin" />
+        <IconLoader2 size={45} className="text-neutral-800 animate-spin" />
       </div>
     );
   }

@@ -4,6 +4,7 @@ import TodoList from "./components/TodoList";
 import { useState } from "react";
 import { useTodo } from "./context/TodoProvider";
 import SearchBar from "./components/SearchBar";
+import { AnimatePresence } from "motion/react";
 
 function App() {
   const [modelOpen, setModelOpen] = useState(false);
@@ -15,11 +16,13 @@ function App() {
       <div className="bg-neutral-50 min-h-dvh font-manrope pt-px">
         <div className="max-w-3xl mx-auto px-4">
           <SearchBar ModelOpen={ModelOpen} />
-          {(modelOpen || isEdit) && (
-            <Model ModelClose={isEdit ? EditClose : ModelClose} w="xl">
-              <TodoForm ModelClose={isEdit ? EditClose : ModelClose} />
-            </Model>
-          )}
+          <AnimatePresence mode="wait">
+            {(modelOpen || isEdit) && (
+              <Model ModelClose={isEdit ? EditClose : ModelClose} w="xl">
+                <TodoForm ModelClose={isEdit ? EditClose : ModelClose} />
+              </Model>
+            )}
+          </AnimatePresence>
           <TodoList />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { IconSearch } from "@tabler/icons-react";
 import { useTodo } from "../context/TodoProvider";
 
 function SearchBar({ ModelOpen }) {
@@ -13,7 +13,7 @@ function SearchBar({ ModelOpen }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Search
+        <IconSearch
           size={20}
           className="absolute top-3.5 left-3 text-neutral-400 font-medium group-focus-within:text-neutral-800"
         />

@@ -5,7 +5,7 @@ import {
   useReducer,
   useState,
 } from "react";
-import { getTodos } from "../utils/todoApi";
+import { getTodos } from "../utils/todoApiRequest";
 
 const TodoContext = createContext();
 

@@ -1,38 +1,38 @@
-import { useState } from "react";
-import { addTodo, updateTodo } from "../utils/todoApi";
+import { IconX, IconLoader2 } from "@tabler/icons-react";
 import { useTodo } from "../context/TodoProvider";
-import { LoaderCircle, X } from "lucide-react";
+import { useState } from "react";
+import { addNewTodo, updateTodoById } from "../utils/todoApiRequest";
 
 function TodoForm({ ModelClose }) {
   const { dispatch, isEdit, editTask } = useTodo();
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFromData] = useState({
-    title: editTask?.updateData.title || "",
-    description: editTask?.updateData.description || "",
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    title: editTask?.updateData?.title || "",
+    description: editTask?.updateData?.description || "",
   });
-  const { title, description } = formData;
   const handleChange = (e) => {
-    setFromData({ ...formData, [e.target.name]: e.target.value });
+    const target = e.target;
+    setFormData({ ...formData, [target.id]: target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setLoading(true);
     try {
-      if (isEdit) {
-        await updateTodo(editTask.id, formData);
+      if (!isEdit) {
+        const todo = await addNewTodo(formData);
+        dispatch({ type: "ADD_TODO", payload: todo.data });
+      } else {
+        await updateTodoById(editTask.id, formData);
         dispatch({
           type: "UPDATE_TODO",
           payload: { id: editTask.id, updateData: formData },
         });
-      } else {
-        const todo = await addTodo(formData);
-        dispatch({ type: "ADD_TODO", payload: todo.data });
       }
-      setFromData({ title: "", description: "" });
+      setFormData({ title: "", description: "" });
     } catch (error) {
       console.dir(error);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
       ModelClose();
     }
   };
@@ -40,28 +40,25 @@ function TodoForm({ ModelClose }) {
     <>
       <div className="rounded-2xl bg-white font-manrope border border-neutral-300 shadow-sm shadow-neutral-300">
         <div className="sm:px-6 px-4 py-4 flex items-center justify-between border-b border-neutral-200">
-          <h2 className="text-lg font-bold text-neutral-800">
-            {isEdit ? "Edit Task" : "Add New Task"}
+          <h2 className="form_title">
+            {!isEdit ? "Add New Task" : "Update Task"}
           </h2>
-          <button
-            className="text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 p-1 rounded-md transition-colors"
-            onClick={ModelClose}
-          >
-            <X size={20} />
+          <button className="form_close_icon" onClick={ModelClose}>
+            <IconX size={20} stroke={2.5} />
           </button>
         </div>
         <form
-          className="sm:px-6 px-4 py-5 flex flex-col gap-4"
+          className="flex flex-col gap-4 sm:px-6 px-4 py-5"
           onSubmit={handleSubmit}
         >
           <div>
             <p className="input_label">Task title</p>
             <input
               type="text"
-              name="title"
-              placeholder="Enter your title"
+              id="title"
+              placeholder="Enter task title"
               className="form_input"
-              value={title}
+              value={formData.title}
               onChange={handleChange}
               required
             />
@@ -70,10 +67,10 @@ function TodoForm({ ModelClose }) {
             <p className="input_label">Content</p>
             <textarea
               rows={8}
-              name="description"
-              placeholder="Enter your content (optional)"
+              id="description"
+              placeholder="Enter task content (optional)"
               className="form_input"
-              value={description}
+              value={formData.description}
               onChange={handleChange}
             ></textarea>
           </div>
@@ -88,14 +85,14 @@ function TodoForm({ ModelClose }) {
             <button
               type="submit"
               className="btn px-6 py-2.5 bg-neutral-800 text-white disabled:opacity-90 disabled:cursor-not-allowed"
-              disabled={isLoading}
+              disabled={loading}
             >
-              {isLoading ? (
-                <LoaderCircle size={20} className="animate-spin" />
-              ) : isEdit ? (
-                "Update"
-              ) : (
+              {loading ? (
+                <IconLoader2 size={20} className="animate-spin" />
+              ) : !isEdit ? (
                 "Add"
+              ) : (
+                "Update"
               )}
             </button>
           </div>

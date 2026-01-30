@@ -6,6 +6,12 @@
 }
 
 @layer components {
+  .form_title {
+    @apply text-lg font-bold text-neutral-800;
+  }
+  .form_close_icon {
+    @apply text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 p-1 rounded-md transition-colors;
+  }
   .input_label {
     @apply mb-2 text-sm font-semibold text-neutral-500;
   }

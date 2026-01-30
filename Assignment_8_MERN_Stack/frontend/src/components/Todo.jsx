@@ -3,13 +3,14 @@ import { useTodo } from "../context/TodoProvider";
 import Model from "./Model";
 import Delete from "./Delete";
 import {
-  Circle,
-  SquarePen,
-  Trash,
-  CircleCheck,
-  LoaderCircle,
-} from "lucide-react";
-import { toggleTodo } from "../utils/todoApi";
+  IconCircle,
+  IconCircleCheckFilled,
+  IconLoader2,
+  IconEdit,
+  IconTrash,
+} from "@tabler/icons-react";
+import { toggleTodo } from "../utils/todoApiRequest";
+import { AnimatePresence } from "motion/react";
 
 function Todo({ _id, title, description, completed }) {
   const { dispatch, EditStart, setEditTask } = useTodo();
@@ -34,11 +35,13 @@ function Todo({ _id, title, description, completed }) {
   };
   return (
     <>
-      {deleteModel && (
-        <Model ModelClose={ModelClose} w="md">
-          <Delete ModelClose={ModelClose} id={_id} />
-        </Model>
-      )}
+      <AnimatePresence mode="wait">
+        {deleteModel && (
+          <Model ModelClose={ModelClose} w="md">
+            <Delete ModelClose={ModelClose} id={_id} />
+          </Model>
+        )}
+      </AnimatePresence>
       <div className="bg-white border border-neutral-200 text-neutral-800 font-manrope p-4 rounded-lg flex items-center justify-between shadow-xs">
         <div className="flex items-center gap-3 sm:gap-4">
           <button
@@ -46,11 +49,11 @@ function Todo({ _id, title, description, completed }) {
             onClick={() => handleToggle(_id)}
           >
             {isLoading ? (
-              <LoaderCircle className="animate-spin" />
+              <IconLoader2 size={25} className="animate-spin" />
             ) : completed ? (
-              <CircleCheck />
+              <IconCircleCheckFilled size={25} />
             ) : (
-              <Circle />
+              <IconCircle size={25} />
             )}
           </button>
           <div>
@@ -73,13 +76,13 @@ function Todo({ _id, title, description, completed }) {
             className="hover:text-neutral-800 transition-colors cursor-pointer"
             onClick={startEditingTask}
           >
-            <SquarePen />
+            <IconEdit size={28} />
           </button>
           <button
             className="hover:text-neutral-800 transition-colors cursor-pointer"
             onClick={ModelOpen}
           >
-            <Trash />
+            <IconTrash size={25} />
           </button>
         </div>
       </div>
