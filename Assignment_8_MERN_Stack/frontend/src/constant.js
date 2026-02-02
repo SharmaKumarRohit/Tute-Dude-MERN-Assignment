@@ -1,2 +1,3 @@
 // export const BASE_URL = "http://localhost:4000/api/todos";
-export const BASE_URL = "https://tute-dude-mern-assignment-1.onrender.com";
+export const BASE_URL =
+  "https://tute-dude-mern-assignment-1.onrender.com/api/todos";
