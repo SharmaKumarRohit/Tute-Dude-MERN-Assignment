@@ -12,7 +12,7 @@
 ## Live links:
 
 - Frontend hosted on vercel: [Live demo link](https://tute-dude-mern-assignment-jqy1.vercel.app/)
-- Backend hosted on vercel: [Live demo link](https://tute-dude-mern-assignment-v4eb.vercel.app/)
+- Backend hosted on vercel: [Live demo link](https://tute-dude-mern-assignment-1.onrender.com)
 
 ## Project Features
 
